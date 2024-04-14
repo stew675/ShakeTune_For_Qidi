@@ -39,29 +39,31 @@ is quite large at ~700MB.  We also need to download the package tarballs which t
   rm klippain-for-qidi.tgz python-3-12-3.tgz
 ```
 3. In the FluiddUI, edit your **printer.cfg** file
-..* Near the top of the file where you see the _include_ section, add the following line
-..* **[include K-ShakeTune/*.cfg]**
-..* Now click the **Save & Restart** button at the top
+  * Near the top of the file where you see the _include_ section, add the following line
+  * ```[include K-ShakeTune/*.cfg]```
+  * Now click the **Save & Restart** button at the top
 4. The installation is complete.  You are now done.
 
-## What did that installation just do?
+## What did that installation just do?  What was in those tarballs?
 
 ### python-3-12-3.tgz
 
-This creates a new directory called **python-3.12.3** which is a mostly complete standalone Python 3.12.3 environment.
+This created a new directory called **/home/mks/python-3.12.3** which is a mostly complete standalone Python 3.12.3 environment.
+
 This version of Python does not appear to be compatible with Qidi's stock version 3.7 of Python, which is why I chose
-to install it as a separate package.  If you wish to play around with it, add the following directory to your PATH
-environment variable:
+to install it as a separate package.
+
+If you wish to play around with it, add the following directory to your PATH environment variable:
 ```
 /home/mks/python-3.12.3/bin
 ```
 
 ### klippain-for-qidi.tgz
 
-This creates a new directory called **klippain_shaketune** which contains the shaketune scripts and associated python
+This created a new directory called **/home/mks/klippain_shaketune** which contains the shaketune scripts and associated python
 environment that the klippain utility requires.
 
-This also installs a new gcode command called `gcode_shell_command` into the Qidi Klipper environment by creating the
+This also installed a new gcode command called `gcode_shell_command` into the Qidi Klipper environment by creating the
 following file:
 ```
 /home/mks/klipper/klippy/extras/gcode_shell_command.py
@@ -70,11 +72,11 @@ following file:
 That command allows for gcode files to call shell scripts, which is the mechanism that Klippain uses to invoke the
 Python scripts that it uses to do its job
 
-Additionally, the tarball also does the following
+Additionally, unpacking the tarball also did the following
 
-1. Creates a symlink from `/home/mks/klipper_config/K-ShakeTune` to `/home/mks/klippain_shaketune/K-Shaketune`
+1. Created a symlink from `/home/mks/klipper_config/K-ShakeTune` to `/home/mks/klippain_shaketune/K-Shaketune`
   * This allows for Klipper to be able to find the Klippain config files and scripts
-2. Creates the directory `/home/mks/klipper_config/K-ShakeTune_results` which is where Klippain will store the various output graphs, which are able to be easily accessed from the FluiddUI in the `Configuration` tab
+2. Created the directory `/home/mks/klipper_config/K-ShakeTune_results` which is where Klippain will store the various output graphs, which are able to be easily accessed from the FluiddUI in the `Configuration` tab
 
 ## How to Uninstall and delete Klippain ShakeTune (and Python 3.12.3)
 
